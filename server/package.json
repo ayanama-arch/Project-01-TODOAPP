@@ -1,0 +1,23 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "A simple backend api for managing todos with support for priority, tags and reminders.",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayanama-arch/Project-01-TODOAPP.git"
+  },
+  "keywords": [
+    "toodapp",
+    "project-01"
+  ],
+  "author": "Ayan Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayanama-arch/Project-01-TODOAPP/issues"
+  },
+  "homepage": "https://github.com/ayanama-arch/Project-01-TODOAPP#readme"
+}
