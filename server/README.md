@@ -20,7 +20,7 @@ A scalable backend API for managing todos with support for priority, tags and re
 - **Framework:** Express.js
 - **Database:** MongoDB
 - **ORM/ODM:** Mongoose
-- **API Docs:** Swagger / Postman
+- **API Docs:** Postman
 
 ---
 
@@ -42,8 +42,8 @@ src/
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/your-username/todo-api.git
-cd todo-api
+git clone https://github.com/ayanama-arch/Project-01-TODOAPP.git
+cd 01-TODOAPP/server
 npm install
 ```
 

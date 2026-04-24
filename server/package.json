@@ -4,7 +4,8 @@
   "description": "A simple backend api for managing todos with support for priority, tags and reminders.",
   "main": "server.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/ayanama-arch/Project-01-TODOAPP/issues"
   },
-  "homepage": "https://github.com/ayanama-arch/Project-01-TODOAPP#readme"
+  "homepage": "https://github.com/ayanama-arch/Project-01-TODOAPP#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.5.0"
+  }
 }
