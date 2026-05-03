@@ -1,4 +1,6 @@
 const express = require("express");
+const TodoController = require("../controllers/todo-controller");
+
 const router = express.Router();
 
 // GET    /api/todos        # Get all todos
@@ -8,18 +10,18 @@ const router = express.Router();
 // DELETE /api/todos/:id    # Delete todo
 
 // Get all todos
-router.get("/todos");
+router.get("/todos", TodoController.getAllTodos);
 
 // Create todo
-router.post("/todos");
+router.post("/todos", TodoController.createTodo);
 
 // Get single todo
-router.get("/todos/:id");
+// router.get("/todos/:id");
 
 // Update todo
-router.put("/todos/:id");
+router.put("/todos/:_id", TodoController.updateTodo);
 
 // Delete todo
-router.delete("/todos/:id");
+router.delete("/todos/:_id", TodoController.deleteTodo);
 
 module.exports = router;
