@@ -59,6 +59,16 @@ const getAllTodos = TryCatch(async (req, res, next) => {
   return ApiResponse.success(res, (data = existingTodos));
 });
 
+const getSingleTodo = TryCatch(async (req, res, next) => {
+  const todo = await TodoModel.findById(req.params._id);
+
+  if (!todo) {
+    return next(new ErrorHandler(ErrorCodes.NOT_FOUND, "todo not found."));
+  }
+
+  ApiResponse.success(res, todo);
+});
+
 const deleteTodo = TryCatch(async (req, res, next) => {
   const deletedTodo = await TodoModel.findByIdAndDelete(req.params._id);
 
@@ -71,4 +81,35 @@ const deleteTodo = TryCatch(async (req, res, next) => {
   ApiResponse.success(res, "task deleted successfully");
 });
 
-module.exports = { createTodo, updateTodo, getAllTodos, deleteTodo };
+const getNotifications = TryCatch(async (req, res, next) => {
+  const now = new Date();
+
+  // 2 hours ahead
+  const twoHoursLater = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+
+  // 1. Upcoming tasks (within next 2 hrs)
+  const upcomingTasks = await TodoModel.find({
+    dueDate: {
+      $gte: now,
+      $lte: twoHoursLater,
+    },
+    status: { $ne: "completed" },
+  }).sort({ dueDate: 1 });
+
+  // 2. Missed tasks (deadline passed but not completed)
+  const missedTasks = await TodoModel.find({
+    dueDate: { $lt: now },
+    status: { $ne: "completed" },
+  }).sort({ dueDate: -1 });
+
+  ApiResponse.success(res, (data = { upcomingTasks, missedTasks }));
+});
+
+module.exports = {
+  createTodo,
+  updateTodo,
+  getAllTodos,
+  deleteTodo,
+  getNotifications,
+  getSingleTodo,
+};

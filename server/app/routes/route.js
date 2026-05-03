@@ -16,12 +16,14 @@ router.get("/todos", TodoController.getAllTodos);
 router.post("/todos", TodoController.createTodo);
 
 // Get single todo
-// router.get("/todos/:id");
+router.get("/todos/:_id", TodoController.getSingleTodo);
 
 // Update todo
 router.put("/todos/:_id", TodoController.updateTodo);
 
 // Delete todo
 router.delete("/todos/:_id", TodoController.deleteTodo);
+
+router.get("/notifications", TodoController.getNotifications);
 
 module.exports = router;
